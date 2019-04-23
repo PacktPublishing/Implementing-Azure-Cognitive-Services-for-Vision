@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28711.60
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppFaceDetectVerify", "ConsoleAppFaceDetectVerify\ConsoleAppFaceDetectVerify.csproj", "{DE70DDB3-E26A-457F-BE39-36DCE73481FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE70DDB3-E26A-457F-BE39-36DCE73481FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE70DDB3-E26A-457F-BE39-36DCE73481FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE70DDB3-E26A-457F-BE39-36DCE73481FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE70DDB3-E26A-457F-BE39-36DCE73481FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4C2C1B1-A2E2-4317-922B-431144A3ADE7}
+	EndGlobalSection
+EndGlobal
