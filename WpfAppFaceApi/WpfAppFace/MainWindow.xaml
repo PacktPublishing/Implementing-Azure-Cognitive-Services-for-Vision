@@ -1,0 +1,207 @@
+﻿<Window x:Class="WpfAppFace.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppFace"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        WindowStyle="None" ResizeMode="NoResize"  
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <StackPanel Orientation="Vertical" Background="AliceBlue">
+        <Menu IsMainMenu="True">
+            <MenuItem Header="_File">
+                <MenuItem Header="Exit" Click="MenuItem_Click" InputGestureText="Ctrl+X">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ExitToApp" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <GroupBox Header="Image 1" Grid.Column="0" Grid.Row="0" Margin="16">
+                <StackPanel>
+                    <Image x:Name="img1" Source="{Binding Image1, UpdateSourceTrigger=PropertyChanged}"  Height="180" Width="232"/>
+
+                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="10"
+    materialDesign:ButtonProgressAssist.Value="-1"
+    materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding LoadingImage1, UpdateSourceTrigger=PropertyChanged}"
+    materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                Content="Load Image 1" Click="LoadingImage1_Click" Width="200"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Column="1" Grid.Row="0"  Header="Image 1 Results" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16"
+  materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="0">
+                <TextBlock x:Name="txtImage1" Margin="6,6,6,6" TextWrapping="Wrap" Text="" />
+            </GroupBox>
+
+            <GroupBox Grid.Column="2" Grid.Row="0"  Header="Image 2 Results" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16"
+  materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="0">
+                <TextBlock x:Name="txtImage2" Grid.Column="2" Margin="6" TextWrapping="Wrap" Text="" />
+            </GroupBox>
+
+            <GroupBox Header="Image 2" Grid.Column="3" Grid.Row="0" Margin="16">
+                <StackPanel>
+                    <Image x:Name="img2" Source="{Binding Image2, UpdateSourceTrigger=PropertyChanged}" Height="180" Width="232"/>
+                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="10"
+    materialDesign:ButtonProgressAssist.Value="-1"
+    materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding LoadingImage2, UpdateSourceTrigger=PropertyChanged}"
+    materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="Load Image 2" Click="LoadingImage2_Click" Width="200" />
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <materialDesign:DialogHost DialogClosing="DialogHost_DialogPersonGroupClosing" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="16" MinHeight="300" MinWidth="300">
+                        <TextBlock>Add Person Group</TextBlock>
+                        <TextBox x:Name="PersonGroupTextBoxId" materialDesign:HintAssist.Hint="Id">
+                            <TextBox.Text>
+                                <Binding Path="Id" UpdateSourceTrigger="PropertyChanged">
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox x:Name="PersonGroupTextBoxName" materialDesign:HintAssist.Hint="Name">
+                            <TextBox.Text>
+                                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" Command="materialDesign:DialogHost.CloseDialogCommand">
+                                <Button.CommandParameter>
+                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">True</system:Boolean>
+                                </Button.CommandParameter> ACCEPT
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True" Margin="0 8 8 0" Command="materialDesign:DialogHost.CloseDialogCommand">
+                                <Button.CommandParameter>
+                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                        False
+                                    </system:Boolean>
+                                </Button.CommandParameter>
+                                CANCEL
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+                <Border BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" MinWidth="256" MinHeight="200" ClipToBounds="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ListBox x:Name="PersonGroupListBox" SelectedItem="{Binding PersonGroupListBoxSelectedItem}" SelectionChanged="PersonGroupListBox_SelectionChanged">
+                        </ListBox>
+                        <materialDesign:ColorZone Mode="PrimaryMid" Grid.Row="1" Effect="{DynamicResource MaterialDesignShadowDepth5}">
+                            <TextBlock Margin="16">Person Groups</TextBlock>
+                        </materialDesign:ColorZone>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="0" Margin="0 0 62 -20">
+                            <materialDesign:PackIcon Kind="Plus" Height="22" Width="22" />
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" IsEnabled="{Binding PersonGroupListBoxSelectedItemNotNull, UpdateSourceTrigger=PropertyChanged}" Command="{Binding DeletePersonGroupCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="0" Margin="0 0 16 -20">
+                            <materialDesign:PackIcon Kind="Minus" Height="22" Width="22" />
+                        </Button>
+                    </Grid>
+                </Border>
+            </materialDesign:DialogHost>
+
+            <materialDesign:DialogHost DialogClosing="DialogHost_DialogPersonClosing" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="16" MinHeight="300" MinWidth="300">
+                        <TextBlock>Add Person</TextBlock>
+                        <TextBox x:Name="PersonName" materialDesign:HintAssist.Hint="Name">
+                            <TextBox.Text>
+                                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox x:Name="PersonData" materialDesign:HintAssist.Hint="Data">
+                            <TextBox.Text>
+                                <Binding Path="Data" UpdateSourceTrigger="PropertyChanged">
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" Command="materialDesign:DialogHost.CloseDialogCommand">
+                                <Button.CommandParameter>
+                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">True</system:Boolean>
+                                </Button.CommandParameter> ACCEPT
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True" Margin="0 8 8 0" Command="materialDesign:DialogHost.CloseDialogCommand">
+                                <Button.CommandParameter>
+                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                        False
+                                    </system:Boolean>
+                                </Button.CommandParameter>
+                                CANCEL
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+                <Border BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" MinWidth="256" MinHeight="200" ClipToBounds="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ListBox x:Name="PersonListBox" SelectedItem="{Binding PersonListBoxSelectedItem}" SelectionChanged="PersonListBox_SelectionChanged">
+                        </ListBox>
+                        <materialDesign:ColorZone Mode="PrimaryMid" Grid.Row="1" Effect="{DynamicResource MaterialDesignShadowDepth5}">
+                            <TextBlock Margin="16">Persons</TextBlock>
+                        </materialDesign:ColorZone>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" IsEnabled="{Binding PersonGroupListBoxSelectedItemNotNull, UpdateSourceTrigger=PropertyChanged}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="0" Margin="0 0 62 -20">
+                            <materialDesign:PackIcon Kind="Plus" Height="22" Width="22" />
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" IsEnabled="{Binding PersonListBoxSelectedItemNotNull, UpdateSourceTrigger=PropertyChanged}" Command="{Binding DeletePersonCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="0" Margin="0 0 16 -20">
+                            <materialDesign:PackIcon Kind="Minus" Height="22" Width="22" />
+                        </Button>
+                    </Grid>
+                </Border>
+            </materialDesign:DialogHost>
+
+            <Border Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" MinWidth="256" MinHeight="200" ClipToBounds="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ListBox x:Name="PersonDetailListBox" SelectedItem="{}" SelectionChanged="PersonDetailListBox_SelectionChanged">
+                        </ListBox>
+                        <materialDesign:ColorZone Mode="PrimaryMid" Grid.Row="1" Effect="{DynamicResource MaterialDesignShadowDepth5}">
+                            <TextBlock Margin="16">Person Details</TextBlock>
+                        </materialDesign:ColorZone>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="AddFaceToPerson_Click" IsEnabled="{Binding PersonListBoxSelectedItemNotNull, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="0" Margin="0 0 28 -20">
+                            <materialDesign:PackIcon Kind="Upload" Height="22" Width="22" />
+                        </Button>
+                    </Grid>
+                </Border>
+
+        </Grid>
+    </StackPanel>
+    
+</Window>
