@@ -30,7 +30,7 @@ namespace WpfAppFace
         // need to change the region.
         // Specify the Azure region
         private const string faceEndpoint =
-            "https://westeurope.api.cognitive.microsoft.com";
+            "https://<enter your location here>.api.cognitive.microsoft.com";
 
         private static readonly FaceAttributeType[] faceAttributes =
             { FaceAttributeType.Age, FaceAttributeType.Gender, FaceAttributeType.Emotion };
