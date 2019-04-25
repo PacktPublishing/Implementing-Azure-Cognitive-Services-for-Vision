@@ -19,24 +19,24 @@ By the end of this course, you will be confident and be able to use face recogni
 ## Instructions and Navigation
 ### Assumed Knowledge
 To fully benefit from the coverage included in this course, you will need:<br/>
-●	Basic Azure portal knowledge
-●	Familiarity with GitHub for source control
-●	Basic programming skills (C#)
-●	A IDE (Visual Studio Code or preferably Visual Studio 2019)
-●	Basic understanding of Docker
+●	Basic Azure portal knowledge<br/>
+●	Familiarity with GitHub for source control<br/>
+●	Basic programming skills (C#)<br/>
+●	A IDE (Visual Studio Code or preferably Visual Studio 2019)<br/>
+●	Basic understanding of Docker<br/>
 
 ### Technical Requirements
 This course has the following software requirements:<br/>
-●	An IDE like Visual Studio Code or Visual Studio 2019
-●	Docker installed on your machine (for video 4.5 on Custom Vision)
-●	Postman for testing APIs (any other type of API test tool will also be fine, like curl)
-●	Azure account
-This course has been tested on the following system configuration:
-●	OS: Windows 10
-●	Processor: Quad Core 3.0 Ghz
-●	Memory: 8GB
-●	Hard Disk Space: 2GB
-●	Video Card: 256MB Video Memory
+●	An IDE like Visual Studio Code or Visual Studio 2019<br/>
+●	Docker installed on your machine (for video 4.5 on Custom Vision)<br/>
+●	Postman for testing APIs (any other type of API test tool will also be fine, like curl)<br/>
+●	Azure account<br/><br/>
+This course has been tested on the following system configuration:<br/>
+●	OS: Windows 10<br/>
+●	Processor: Quad Core 3.0 Ghz<br/>
+●	Memory: 8GB<br/>
+●	Hard Disk Space: 2GB<br/>
+●	Video Card: 256MB Video Memory<br/>
 
 
 ## Related Products
